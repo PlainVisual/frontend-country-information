@@ -30,13 +30,13 @@
 --primary-clr: hsl(259, 72%, 47%);
 --secondary-clr: hsl(337, 83%, 60%);
 --font-clr: hsl(0, 0%, 5%);
---word-clr: hsl(248, 100%, 97%);
---service-tiling-clr: hsl(0, 0%, 48%);
---background-clr-main: hsl(241, 75%, 58%);
---background-clr-secondary: hsl(210, 33%, 96%);
---word-clr-light: hsl(206, 57%, 95%);
---accent-clr:hsl(0, 0%, 100%);
---gradient-clr: linear-gradient(to bottom right, hsl(241, 75%, 58%) , hsl(257, 71%, 48%));
+--region-africa: hsl(210, 78%, 42%);
+--region-americas: hsl(120, 62%, 47%);
+--region-asia: hsl(0, 82%, 47%);
+--region-europe: hsl(60, 91%, 49%);
+--region-oceania: rgb(195, 10, 195);
+--region-global: rgb(66, 65, 65);
+
 
 /* -- LAYOUT CONTROL WIDTH AND MARGIN-- */
 
@@ -118,7 +118,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* border: 1px dashed red; */
+  border: 1px dashed red;
 }
 
 .inner-container {
@@ -126,5 +126,52 @@ a {
   flex-grow: 0;
   flex-shrink: 1;
   margin: 0 var(--inner-container-margin);
-  /* border: 1px dashed blue; */
+  border: 1px dashed blue;
+}
+
+/* Header styling */
+
+.header-inner {
+  padding: 2rem 0rem;
+  text-align: center;
+}
+
+
+.world-map {
+  margin-top: 0.5rem;
+}
+
+.content-map-countries {
+
+  columns: 3;
+}
+
+.flag-country {
+  width: 20%;
+}
+
+/* colors regions */
+
+.region-africa {
+ color: var(--region-africa);
+}
+
+.region-americas {
+ color: var(--region-americas);
+}
+
+.region-asia {
+ color: var(--region-asia);
+}
+
+.region-europe {
+ color: var(--region-europe);
+}
+
+.region-oceania {
+ color: var(--region-oceania);
+}
+
+.region-global {
+ color: var(--region-global);
 }

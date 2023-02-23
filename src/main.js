@@ -4,21 +4,23 @@ import axios from "axios";
 // Create Async function Get endpoint from REST Countries API so we can load all the data.
 
 async function fetchCountryData() {
-
+  // Return a Promise
   try {
-    const response = await axios.get('https://restcountries.com/v2/all?fields=name,region,flag,population');
+    const response = await axios.get('https://restcountries.com/v2/all?fields=name,region,flag,population,currencies,subregion,languages');
     const countries = response.data;
+    console.table(countries);
     return countries;
-    // console.log(countries);
+    
         
   } catch(e) {
+    // Add error message so that the user will be informed when the API-server is not responding
     console.error(e);
   }
   
 }
 
-// Create a function to sort the data on population from low to high
-function sortDataPopulation() {
+// Create a function to sort the data on population from low to high. With the array sort(). I had to use the .then() method to call the Promise object from the async function. 
+function sortDataPopulation() { 
 
   return fetchCountryData().then(countryArray => {
     // console.log(countryArray);
@@ -34,9 +36,7 @@ function sortDataPopulation() {
 function contentData() {
  
   return sortDataPopulation().then((sortedArray) => {
-
-    
-
+    // Used the map() method to get thrue the array and list the data on the webpage.
     const contentData = sortedArray.map((country) => {
 
       // console.log(country);
@@ -45,9 +45,14 @@ function contentData() {
       return `
       
       <div class=placeholder-country>
-        <span><img class='flag-country' src="${country.flag}" alt="This a flag of the country ${country.name}" /></span>
+        <div class="country-info">
+        <span class='flag-country'><img src="${country.flag}" alt="This a flag of the country ${country.name}" /></span>
         <span class="${country.region}"><h4>${country.name}</h4></span>
-        <p>Has a population of ${country.population} people</p>
+        </div>
+          <div class="country-specs">
+            <img class="icon-pop" src="./population-bank.png" alt="population" />
+            <p>Has a population of <strong>${country.population} people</strong></p>
+          </div>
       </div>      
             
       `;
@@ -56,8 +61,8 @@ function contentData() {
     });
 
     // console.log(contentData);
+    // This is where the content from the array is placed inside the container .content-map-countries
     const listing = document.querySelector(".content-map-countries");
-
     listing.innerHTML = contentData.join("");
     
 
@@ -69,47 +74,10 @@ function contentData() {
 
 contentData();
 
-
-// function regionColorizer() {
-//   return sortDataPopulation().then((sortedArray) => {
-//     const colorClasses = sortedArray.map((list) => {
-//       // console.log(list.region);
-//       const listSelector = list.region;
-//       let colorClass;
-
-//       if (listSelector === 'Africa') {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-africa");
-//         } else if (listSelector === 'Americas') {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-americas");
-//       } else if (listSelector === 'Asia') {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-asia");
-//       } else if (listSelector === 'Europe') {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-europe");
-//       } else if (listSelector === 'Oceania') {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-oceania");
-//       } else {
-//         colorClass = document.getElementById(listSelector);
-//         colorClass.classList.add("region-global");
-//       }
-
-//       // console.log(colorClass);
-//       return colorClass;
-//     });
-
-//     // console.log(colorClasses);
-//     return colorClasses;
-//   });
-// }
-
-// regionColorizer()
-
 function regionColorizer() {
+
   return sortDataPopulation().then((sortedArray) => {
+
     const colorClasses = sortedArray.map((list) => {
       // console.log(list.region);
       const listSelector = list.region;
@@ -120,15 +88,20 @@ function regionColorizer() {
         const region = regions[i];
         if (listSelector === 'Africa') {
           region.classList.add("region-africa");
-        } else if (listSelector === 'Americas') {
+        } 
+        else if (listSelector === 'Americas') {
           region.classList.add("region-americas");
-        } else if (listSelector === 'Asia') {
+        } 
+        else if (listSelector === 'Asia') {
           region.classList.add("region-asia");
-        } else if (listSelector === 'Europe') {
+        } 
+        else if (listSelector === 'Europe') {
           region.classList.add("region-europe");
-        } else if (listSelector === 'Oceania') {
+        } 
+        else if (listSelector === 'Oceania') {
           region.classList.add("region-oceania");
-        } else {
+        } 
+        else {
           region.classList.add("region-global");
         }
         colorClass = region;

@@ -7,27 +7,84 @@
     <title>Country Information - World Regions</title>
   </head>
   <body>
-    <header class="header-outer outer-container">
-      <div class="header-inner inner-container">
-        <h1>World Regions</h1>
-        <img class="world-map" src="/world_map.png" alt="De wereldkaart met regio's">
-        
-      </div>
-    </header>
+    <div class="search-wrapper">
+      <div class="search-content search-animation">
+          <div class="search-result-content"></div>
+          <span id="close-btn"><img src="/close-window-icon.svg" alt=""></span>
+        </div>
+    </div>
+    <div class="sidebar-wrapper">
+        <header class="sidebar-outer">
+          <div class="sidebar-inner">
+            <div class="logo-placeholder"><img src="/Logo-world.svg" alt="Logo-company"></div>
+            <span class="world-map"><img  src="/world_map.png" alt="De wereldkaart met regio's"></span>
+            <div class="text-intro">
+                <span class="text-intro-heading">Welcome to our country search app!</span> 
+                <p>With this app, you can easily find information about countries all over the world. Simply enter the name of a country or choose a region to filter your search, and you'll receive data such as population, country name, capital city, and currency. Whether you're planning a trip or just curious about different countries, this app is a great resource for exploring the world. <strong>Let's get started!</strong>
+                 </p>
+            </div>
+            <div class="copyright"><p>Copyright © <a href="https://github.com/PlainVisual" target="_blank">Student Frontend 2023</a>. All Rights Reserved.</br> This app uses data from the <a href="https://restcountries.com" target="_blank">REST Countries API</a></p></div>
+          </div>
+        </header>
+    </div>
 
     <main>
-
-      <div class="outer-container">
-        
+           
         <div class="inner-container">
-          <div class="content-map-countries"></div>
+          
+          <div class="bar-wrapper">
+            
+              <form id="search-form">
+                
+                <div class="search-field">
+                  <img class="search-icon" src="/search-icon.svg" alt="" />
+                  <input type="search" id="search-bar" name="search-bar" placeholder="Type to search a country"/>
+                </div>
+                <div class="filter-regions">
+                  <fieldset>
+                    <input type="radio" id="region-all" name="regions" value="region-all">
+                    <label for="region-all">All regions</label>
+                  </fieldset>
+                  <fieldset>
+                    <input type="radio" id="region-europe" name="regions" value="Europe">
+                    <label for="region-europe">Europe</label>
+                  </fieldset>
+                  <fieldset>
+                    <input type="radio" id="region-africa" name="regions" value="Africa">
+                    <label for="region-africa">Africa</label>
+                  </fieldset>
+                  <fieldset>
+                    <input type="radio" id="region-asia" name="regions" value="Asia">
+                    <label for="region-asia">Asia</label>
+                  </fieldset>
+                  <fieldset>
+                    <input type="radio" id="region-americas" name="regions" value="Americas">
+                    <label for="region-americas">Americas</label>
+                  </fieldset>
+                  <fieldset>
+                    <input type="radio" id="region-oceania" name="regions" value="Oceania">
+                    <label for="region-oceania">Oceania</label>
+                  </fieldset>
+                  
+                </div>
+                
+              </form>
+
+            
+          </div>
+          <div class="outer-container">
+          <div class="content-map-countries">
+          <div id="preloader"></div>
+          <div class="error-msg"></div>
+          </div>
         </div>
 
       </div>
 
 
     </main>
-
+    <footer><div class="footer-copyright"><p>Copyright © <a href="https://github.com/PlainVisual" target="_blank">Student Frontend 2023</a>. All Rights Reserved.</br> This app uses data from the <a href="https://restcountries.com" target="_blank">REST Countries API</a></p></div>
+    </div></footer>
     
     <script type="module" src="./src/main.js"></script>
   </body>

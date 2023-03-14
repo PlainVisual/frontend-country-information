@@ -66,10 +66,14 @@ function filterSearch(countries, searchString) {
    
   });
 
-  contentData(filteredCountries);
-  regionColorizer(filteredCountries);
-  popupscreen(filteredCountries);
-  
+  if (filteredCountries.length === 0) {
+    const listing = document.querySelector(".content-map-countries");
+    listing.innerHTML = "<h2>No data was found. Please type another country.</h2>";
+  } else {
+    contentData(filteredCountries);
+    regionColorizer(filteredCountries);
+    popupscreen(filteredCountries);
+  }
 }
 
 // Radio buttons for the filter of the regions
@@ -89,7 +93,7 @@ for (let i = 0; i < radioIds.length; i++) {
   radioBtn.addEventListener('change', (e) => {
     e.preventDefault();
     const radioId = e.target.value;
-    if (radioBtn.checked === true) {
+    if (radioBtn.checked) {
       regionCheck(countries, radioId);
     } 
   });
@@ -119,9 +123,7 @@ function regionCheck(countries, radioId) {
 function sortDataPopulation(population) { 
 
   //  console.log(population);
-    population.sort((a, b) => {
-      return a.population - b.population 
-    });
+    population.sort((a, b) => a.population - b.population);
 
           
 }
@@ -132,6 +134,8 @@ function contentData(sortedArray) {
     const contentData = sortedArray.map((country) => {
 
       // console.log(country);
+      
+      
       return `
       
       <article class="placeholder-country">
@@ -147,6 +151,8 @@ function contentData(sortedArray) {
       </article>
                  
       `;
+
+      
   
 
     });
@@ -167,27 +173,29 @@ function regionColorizer(colorized) {
       
       const regions = document.getElementsByClassName(listSelector);
       for (let i = 0; i < regions.length; i++) {
-        const region = regions[i];
-        if (listSelector === 'Africa') {
-          region.classList.add("region-africa");
-        } 
-        else if (listSelector === 'Americas') {
-          region.classList.add("region-americas");
-        } 
-        else if (listSelector === 'Asia') {
-          region.classList.add("region-asia");
-        } 
-        else if (listSelector === 'Europe') {
-          region.classList.add("region-europe");
-        } 
-        else if (listSelector === 'Oceania') {
-          region.classList.add("region-oceania");
-        } 
-        else {
-          region.classList.add("region-global");
+      const region = regions[i];
+          switch (listSelector) {
+            case 'Africa':
+              region.classList.add("region-africa");
+              break;
+            case 'Americas':
+              region.classList.add("region-americas");
+              break;
+            case 'Asia':
+              region.classList.add("region-asia");
+              break;
+            case 'Europe':
+              region.classList.add("region-europe");
+              break;
+            case 'Oceania':
+              region.classList.add("region-oceania");
+              break;
+            default:
+              region.classList.add("region-global");
+              break;
+          }
+          colorClass = region;
         }
-        colorClass = region;
-      }
 
       // console.log(colorClass);
       return colorClass;

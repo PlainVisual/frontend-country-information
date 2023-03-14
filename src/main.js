@@ -26,10 +26,6 @@ async function fetchCountryData() {
     regionColorizer(countries);
 
     popupscreen(countries);
-
-
-
-    
             
   } catch(e) {
       
@@ -42,8 +38,6 @@ async function fetchCountryData() {
   }
   
 }
-
-
 
 // ------------ Search and Filter header -------------------------
 // Searchbar with addeventlistener on input
@@ -151,9 +145,6 @@ function contentData(sortedArray) {
       </article>
                  
       `;
-
-      
-  
 
     });
 

@@ -126,6 +126,10 @@ body {
   color: var(--region-asia);
 }
 
+.content-map-countries h2 {
+  color: hsl(222, 26%, 33%);
+}
+
 #preloader {
   background: url(/earth-gif-preloader.gif) no-repeat center center;
   background-size: 50%;
@@ -221,7 +225,7 @@ body {
 
 .text-intro-heading {
   font-size: var(--ff-fontsize-h3);
-  color: #3f4c6b;
+  color: hsl(222, 26%, 33%);
   text-align: end;
   
 }
@@ -803,6 +807,10 @@ footer {
   padding: 2rem 0rem;
   }
 
+  .content-map-countries h2 {
+    font-size: 1.25rem;
+  }
+
   .search-content {
     padding: 2rem 2rem;
     width: 75vw;
@@ -822,7 +830,11 @@ footer {
   }
 
   #close-btn {
-    width: 8%;
+    width: 11%;
+    background-color: #FFF;
+    padding: 0.25rem;
+    border-radius: 4px;
+    box-shadow:  -2px 5px 15px 15px rgba(0, 0, 0, 0.05);
   }
 
   .search-specs p {

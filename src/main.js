@@ -62,7 +62,7 @@ function filterSearch(countries, searchString) {
 
   if (filteredCountries.length === 0) {
     const listing = document.querySelector(".content-map-countries");
-    listing.innerHTML = "<h2>No data was found. Please type another country.</h2>";
+    listing.innerHTML = "<h2>No data was found. Type another country to find the best result.</h2>";
   } else {
     contentData(filteredCountries);
     regionColorizer(filteredCountries);
